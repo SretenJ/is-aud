@@ -1,10 +1,6 @@
-﻿using EshopApplication.Models.Domain;
-using System;
+﻿using EshopApplication.Domain.DomainModels.Relations;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace EshopApplication.Models.DTO
+namespace EshopApplication.Domain.DomainModels.DTO
 {
     public class ShoppingCartDTO
     {

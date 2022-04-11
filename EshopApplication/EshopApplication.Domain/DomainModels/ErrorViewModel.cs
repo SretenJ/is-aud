@@ -1,6 +1,6 @@
-using System;
 
-namespace EshopApplication.Models
+
+namespace EshopApplication.Domain.DomainModels
 {
     public class ErrorViewModel
     {

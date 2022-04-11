@@ -1,12 +1,10 @@
-﻿using EshopApplication.Models.Domain;
-using EshopApplication.Models.Identity;
+﻿using EshopApplication.Domain.DomainModels.Domain;
+using EshopApplication.Domain.DomainModels.Identity;
+using EshopApplication.Domain.DomainModels.Relations;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace EshopApplication.Data
+namespace EshopApplication.Repository
 {
     public class ApplicationDbContext : IdentityDbContext<EshopApplicationUser>
     {
@@ -17,6 +15,8 @@ namespace EshopApplication.Data
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public virtual DbSet<ProductInShoppingCart> ProductInShoppingCarts { get; set; }
+        public virtual DbSet<ProductInOrder> ProductInOrders { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -28,8 +28,8 @@ namespace EshopApplication.Data
                 .Property(z => z.Id)
                 .ValueGeneratedOnAdd();
 
-            builder.Entity<ProductInShoppingCart>()
-                .HasKey(z => new { z.ProductId, z.ShoppingCartId });
+           /* builder.Entity<ProductInShoppingCart>()
+                .HasKey(z => new { z.ProductId, z.ShoppingCartId });*/
 
             builder.Entity<ProductInShoppingCart>()
                 .HasOne(z => z.Product)
@@ -46,8 +46,9 @@ namespace EshopApplication.Data
                 .WithOne(z => z.UserCart)
                 .HasForeignKey <ShoppingCart>(z => z.OwnerId);
 
-            builder.Entity<ProductInOrder>()
-                .HasKey(pisc => new { pisc.ProductId, pisc.OrderId });
+            
+          /*  builder.Entity<ProductInOrder>()
+                .HasKey(pisc => new { pisc.ProductId, pisc.OrderId });*/
 
             builder.Entity<ProductInOrder>()
                 .HasOne(z => z.SelectedProduct)

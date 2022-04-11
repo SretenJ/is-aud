@@ -1,18 +1,16 @@
-using EshopApplication.Data;
-using EshopApplication.Models.Identity;
+
+using EshopApplication.Domain.DomainModels.Identity;
+using EshopApplication.Repository;
+using EshopApplication.Repository.Implementation;
+using EshopApplication.Repository.Interface;
+using EshopApplication.Service.Implementation;
+using EshopApplication.Service.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace EshopApplication
 {
@@ -33,6 +31,11 @@ namespace EshopApplication
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<EshopApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
+
+            services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IShoppingCartService, ShoppingCartService>();
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.ConfigureApplicationCookie(options =>
@@ -59,6 +62,7 @@ namespace EshopApplication
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            
 
             app.UseRouting();
             
@@ -72,6 +76,8 @@ namespace EshopApplication
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+
         }
     }
 }

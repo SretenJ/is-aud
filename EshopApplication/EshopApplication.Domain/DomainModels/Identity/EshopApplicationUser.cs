@@ -1,11 +1,9 @@
-﻿using EshopApplication.Models.Domain;
-using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
 
-namespace EshopApplication.Models.Identity
+using EshopApplication.Domain.DomainModels.Domain;
+using Microsoft.AspNetCore.Identity;
+
+namespace EshopApplication.Domain.DomainModels.Identity
 {
     public class EshopApplicationUser : IdentityUser
     {

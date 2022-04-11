@@ -6,17 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Data\Migrations\20220308195359_UpdateModels.cs" />
-    <Compile Remove="Data\Migrations\20220308195359_UpdateModels.Designer.cs" />
-    <Compile Remove="Data\Migrations\20220310165100_first.cs" />
-    <Compile Remove="Data\Migrations\20220310165100_first.Designer.cs" />
-    <Compile Remove="Data\Migrations\20220310165251_posledna.cs" />
-    <Compile Remove="Data\Migrations\20220310165251_posledna.Designer.cs" />
-    <Compile Remove="Data\Migrations\20220310170102_ThirdMigration.cs" />
-    <Compile Remove="Data\Migrations\20220310170102_ThirdMigration.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.22" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.22" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.22" />
@@ -29,7 +18,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Migrations\" />
+    <ProjectReference Include="..\EshopApplication.Domain\EshopApplication.Domain.csproj" />
+    <ProjectReference Include="..\EshopApplication.Repository\EshopApplication.Repository.csproj" />
+    <ProjectReference Include="..\EshopApplication.Service\EshopApplication.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="nlog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

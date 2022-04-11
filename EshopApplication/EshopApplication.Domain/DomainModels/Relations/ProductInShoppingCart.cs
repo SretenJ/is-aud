@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using EshopApplication.Domain.DomainModels.Domain;
+using System;
 
-namespace EshopApplication.Models.Domain
+namespace EshopApplication.Domain.DomainModels.Relations
 {
-    public class ProductInShoppingCart
+    public class ProductInShoppingCart : BaseEntity
     {
         public Guid ProductId { get; set; }
         public Product Product { get; set; }

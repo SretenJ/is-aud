@@ -1,14 +1,12 @@
-﻿using EshopApplication.Models.Identity;
+﻿using EshopApplication.Domain.DomainModels.Identity;
+using EshopApplication.Domain.DomainModels.Relations;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace EshopApplication.Models.Domain
+namespace EshopApplication.Domain.DomainModels.Domain
 {
-    public class Order
+    public class Order : BaseEntity
     {
-        public Guid Id { get; set; }
         public string UserId { get; set; }
         public EshopApplicationUser User { get; set; }
         public virtual ICollection<ProductInOrder> Products { get; set; }

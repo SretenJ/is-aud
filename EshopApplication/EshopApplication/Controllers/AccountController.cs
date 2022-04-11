@@ -1,9 +1,7 @@
-﻿using EshopApplication.Models.Identity;
+﻿using EshopApplication.Domain.DomainModels.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -42,7 +40,7 @@ namespace EshopApplication.Controllers
                        // PhoneNumber = request.PhoneNumber,
                         EmailConfirmed = true,
                         PhoneNumberConfirmed = true,
-                        UserCart = new Models.Domain.ShoppingCart()
+                        UserCart = new Domain.DomainModels.Domain.ShoppingCart()
                     };
                     var result = await userManager.CreateAsync(user, request.Password);
                     if (result.Succeeded)
